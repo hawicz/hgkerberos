@@ -1,7 +1,14 @@
-import urllib2 as u2
-
 import urllib2_kerberos as u2k
 
+import mercurial.url
+
 def reposetup(ui, repo):
-    if u2._opener is not None:
-        u2._opener.add_handler(u2k.HTTPKerberosAuthHandler())
+
+    mercurial.url.opener_ = mercurial.url.opener
+
+    def opener(*args, **kwargs):
+        urlopener = mercurial.url.opener_(*args, **kwargs)
+        urlopener.add_handler(u2k.HTTPKerberosAuthHandler())
+        return urlopener
+
+    mercurial.url.opener = opener
