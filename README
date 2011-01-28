@@ -1,0 +1,30 @@
+Author: Tim Olsen <tim AT jux DOT com>
+
+Download site: https://bitbucket.org/tolsen/hgkerberos
+
+
+Overview
+--------
+
+hgkerberos provides support for kerberos authentication
+(Negotiate/SPNEGO) over HTTP.
+
+hgkerberos has been successfully tested against Apache's mod_auth_kerb.
+
+
+Configuration
+-------------
+
+Install pykerberos. In debian, the package is
+python-kerberos. pykerberos is developed by Apple so it should be
+available somewhere for Mac OS X. I don't believe it is available for
+Windows.
+
+Install urllib2_kerberos: easy_install urllib2_kerberos
+
+Configure your .hgrc to enable the extension by adding following lines:
+
+[extensions]
+hgext.kerberos=
+# or, if kerberos.py is not in the hgext dir:
+# kerberos=/path/to/hgkerberos.py
