@@ -19,7 +19,7 @@ import urllib2_kerberos as u2k
 
 import mercurial.url
 
-def reposetup(ui, repo):
+def uisetup(ui):
 
     mercurial.url.opener_ = mercurial.url.opener
 
