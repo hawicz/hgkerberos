@@ -1,5 +1,6 @@
 ####################################################################
-# Copyright 2008 Lime Labs LLC
+# Copyright (c) 2008 Lime Labs LLC
+# Copyright (c) 2023 Eric Hawicz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +16,23 @@
 #
 ####################################################################
 
-import urllib2_kerberos as u2k
+"""
+To install this extension (mostly rootless), do:
+
+    sudo apt-get install python3-kerberos  # Debian only, installs Kerberos libs too
+    pip3 install --user urllib_kerberos    # no Debian package (yet?)
+    mkdir -p ~/.hgext
+    cp kerberos.py ~/.hgext/.
+
+    # Update your .hgrc config:
+    grep -q '^kerberos=' ~/.hgrc || sed -i -e"/\[extensions\]/a\
+kerberos=${HOME}/.hgext/kerberos.py" ~/.hgrc
+
+"""
+
+# See https://github.com/willthames/urllib_kerberos
+# aka https://pypi.org/project/urllib_kerberos
+import urllib_kerberos as u2k
 
 import mercurial.url
 
